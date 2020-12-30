@@ -1,6 +1,3 @@
-//import Vue from 'vue';
-//import axios from 'axios';
-
 new Vue({
     el: '#app',
     data() {
@@ -8,47 +5,55 @@ new Vue({
             info: null,
             full: null,
             action: "bye",
-            from: "slarty",
+            name: "Jobs",
+            from: "Other Steve",
+            company: "Apple",
+            sender: null,
+            doit: "Drop",
+            something: "Pretence",
+            noun: "Flatulence",
+            behavior: "Style",
+            thing: "Year",
+            tool: "Octopii",
+            lang: "Swahili",
             ops: null
         }
     },
     mounted() {
-        this.getData();
+        this.getOperations();
     },
     methods: {
-        getData() {
+        getDataOnChange(value) {
             axios
-                .get('https://www.foaas.com/' + this.action + '/' + this.from)
-                .then
-                (response => (this.info = response.data.message + response.data.subtitle, this.full = response)
-                )
-        },
-        getMoreData() {
-            axios
-                .get('https://www.foaas.com/' + this.action + '/' + this.from, {
-                    headers: { Accept: 'text/html' }
+                .get('https://www.foaas.com' + value, {
                 })
-                .then
-                (response => (
-
-                    //this.info = response.data.message + response.data.subtitle + "XXX", 
-                    this.info = "Blah McFuckity",
-                    this.full = response.data
-                    //  document.getElementById("ret").innerHTML = response.data
-                )
-                )
+                .then((response) => {
+                    this.full = response.data.message;
+                    this.sender = this.from;
+                })
         },
         getOperations() {
             axios
                 .get('https://www.foaas.com/operations')
-                .then
-                (response => (this.ops = response.data.filter(function (e) {
-                    return e.name.length < 30;
-                }))
-                )
+                .then((response) => {
+                    this.ops = response.data.filter(function (e) {
+                        return e.name.length < 30;
+                    })
+                })
         },
         onChange(event) {
-            console.log(event.target.value)
+            this.getDataOnChange(event.target.value
+                .replace(":name", this.name)
+                .replace(":from", this.from)
+                .replace(":company", this.company)
+                .replace(":do", this.doit)
+                .replace(":something", this.something)
+                .replace(":noun", this.noun)
+                .replace(":behavior", this.behavior)
+                .replace(":thing", this.thing)
+                .replace(":tool", this.tool)
+                .replace(":language", this.lang)
+                );
         }
     }
 });
