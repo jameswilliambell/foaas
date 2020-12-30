@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="normalize.css">
+    <meta name="viewport" content="width=device-width, initial-scale=0.41, maximum-scale=1" />
+    <link rel="stylesheet" href="index.css">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #app {
+            font-family: 'Avenir', Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 60px;
+            overflow-wrap: break-word;
+        }
+
+        @media screen and (max-device-width: 480px) {
+            body {
+                background: #ccc;
+            }
+        }
+    </style>
+    <style>
+        #inf {
+            h3 {
+                margin: 40px 0 0;
+            }
+
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            li {
+                display: inline-block;
+                margin: 0 10px;
+            }
+
+            a {
+                color: #42b983;
+            }
+        }
+    </style>
+</head>
+
+<body style="width: 100%">
+    <div style="width: 100%" id="app">
+        <input id="action" v-model="action" placeholder="Action">
+        <br>
+        <input id="from" v-model="from" placeholder="From">
+        <br>
+        <button v-on:click="getData()">Buckety</button>
+        <br>
+        <br>
+        <button v-on:click="getOperations()">Operations</button>
+        <br>
+        <br>
+        <a href="#" @click="getMoreData()" class="button expanded">Retrieve</a>
+        <br>
+        <div style="width: 100%" id="inf">
+            {{ info }}
+        </div>
+        <!-- <ul>
+            <li v-for="msg in ops" :value="url">{{ msg.name }}</li>
+        </ul> -->
+        <select @change="onChange($event)" style="width: 254px">
+            <option v-for="msg in ops" :value="msg.url">{{ msg.name }}</option>
+        </select>
+
+        <br>
+        <div v-html="full"></div>
+    </div>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
