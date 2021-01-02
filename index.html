@@ -19,15 +19,15 @@
                     <ul class="wrapper">
                         <li class="app-row">
                             <label for="name">Name</label>
-                            <input type="text" id="name" v-model="name" placeholder="Name">
+                            <input type="text" id="name" v-model="name" placeholder="Name" @change="onOptionsChange($event)">
                         </li>
                         <li class="app-row">
                             <label for="from">From</label>
-                            <input type="text" id="from" v-model="from" placeholder="From">
+                            <input type="text" id="from" v-model="from" placeholder="From" @change="onOptionsChange($event)">
                         </li>
                         <li class="app-row">
                             <label for="company">Company</label>
-                            <input type="text" id="company" v-model="company" placeholder="Company">
+                            <input type="text" id="company" v-model="company" placeholder="Company" @change="onOptionsChange($event)">
                         </li>
                     </ul>
                 </div>
@@ -39,33 +39,33 @@
                     <ul class="wrapper">
                         <li class="app-row">
                             <label for="doit">Do (something)</label>
-                            <input type="text" id="doit" v-model="doit" placeholder="Do something">
+                            <input type="text" id="doit" v-model="doit" placeholder="Do something" @change="onOptionsChange($event)">
                         </li>
                         <li class="app-row">
                             <label for="something">(To) something)</label>
-                            <input type="text" id="something" v-model="something" placeholder="The thing to do it to">
+                            <input type="text" id="something" v-model="something" placeholder="The thing to do it to" @change="onOptionsChange($event)">
                         </li>
                     </ul>
                     <ul class="wrapper">
                         <li class="app-row">
                             <label for="noun">Noun</label>
-                            <input type="text" id="noun" v-model="noun" placeholder="Enter a noun">
+                            <input type="text" id="noun" v-model="noun" placeholder="Enter a noun" @change="onOptionsChange($event)">
                         </li>
                         <li class="app-row">
                             <label for="behavior">Behavior</label>
-                            <input type="text" id="behavior" v-model="behavior" placeholder="Enter a behavior">
+                            <input type="text" id="behavior" v-model="behavior" placeholder="Enter a behavior" @change="onOptionsChange($event)">
                         </li>
                         <li class="app-row">
                             <label for="thing">Thing</label>
-                            <input type="text" id="thing" v-model="thing" placeholder="The Particular thing to fuck (e.g. Year)">
+                            <input type="text" id="thing" v-model="thing" placeholder="The Particular thing to fuck (e.g. Year)" @change="onOptionsChange($event)">
                         </li>
                         <li class="app-row">
                             <label for="tool">Tool</label>
-                            <input type="text" id="tool" v-model="tool" placeholder="The tool they can't use">
+                            <input type="text" id="tool" v-model="tool" placeholder="The tool they can't use" @change="onOptionsChange($event)">
                         </li>
                         <li class="app-row">
                             <label for="lang">Language</label>
-                            <input type="text" id="lang" v-model="lang" placeholder="Enter a language">
+                            <input type="text" id="lang" v-model="lang" placeholder="Enter a language" @change="onOptionsChange($event)">
                         </li>
                     </ul>
                 </div>
@@ -77,7 +77,8 @@
                     <ul class="wrapper">
                         <li class="app-row">
                             <label for="operation">Operation</label>
-                            <select id="operation" @change="onChange($event)">
+                            <select id="operation" @change="onSelectChange($event)">
+                                <option value="0">-Select-</option>
                                 <option v-for="msg in ops" :value="msg.url">{{ msg.name }}</option>
                             </select>
                         </li>
