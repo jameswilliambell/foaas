@@ -43,35 +43,26 @@ new Vue({
         },
         onSelectChange(event) {
             if (document.getElementById("operation").value!="0") {
-                this.getDataOnChange(event.target.value
-                .replace(":name", this.name)
-                .replace(":from", this.from)
-                .replace(":company", this.company)
-                .replace(":do", this.doit)
-                .replace(":something", this.something)
-                .replace(":noun", this.noun)
-                .replace(":behavior", this.behavior)
-                .replace(":thing", this.thing)
-                .replace(":tool", this.tool)
-                .replace(":language", this.lang)
-                );
+                this.getDataOnChange(this.params());
             }
         },
         onOptionsChange(event) {
             if (document.getElementById("operation").value!="0") {
-                this.getDataOnChange(document.getElementById("operation").value
-                .replace(":name", this.name)
-                .replace(":from", this.from)
-                .replace(":company", this.company)
-                .replace(":do", this.doit)
-                .replace(":something", this.something)
-                .replace(":noun", this.noun)
-                .replace(":behavior", this.behavior)
-                .replace(":thing", this.thing)
-                .replace(":tool", this.tool)
-                .replace(":language", this.lang)
-                );
+                this.getDataOnChange(this.params());
             }
+        },
+        params() {
+            return result = document.getElementById("operation").value
+            .replace(":name", this.name)
+            .replace(":from", this.from)
+            .replace(":company", this.company)
+            .replace(":do", this.doit)
+            .replace(":something", this.something)
+            .replace(":noun", this.noun)
+            .replace(":behavior", this.behavior)
+            .replace(":thing", this.thing)
+            .replace(":tool", this.tool)
+            .replace(":language", this.lang)
         }
     }
 });
